@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latihan_flutter/todo_form_screen.dart';
 
 class TodoScreen extends StatefulWidget {
   const TodoScreen({super.key});
@@ -11,14 +12,15 @@ class _TodoScreenState extends State<TodoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Dismissible(
-        key: UniqueKey(),
-        direction: DismissDirection.horizontal,
-        onDismissed: (_) {},
-        child: ListView(
-          children: [
-            for (int i = 0; i < 20; i++)
-              ListTile(
+      body: ListView(
+        children: [
+          for (int i = 0; i < 20; i++)
+            Dismissible(
+              key: UniqueKey(),
+              direction: DismissDirection.horizontal,
+              onDismissed: (_) {},
+              background: Container(color: Colors.red),
+              child: ListTile(
                 leading: null,
                 title: const Text('Judul Todo'),
                 subtitle: const Text(
@@ -28,14 +30,17 @@ class _TodoScreenState extends State<TodoScreen> {
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {},
               ),
-            const SizedBox(
-              height: 100,
             ),
-          ],
-        ),
+          const SizedBox(
+            height: 100,
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => showDialog(
+          context: context,
+          builder: (BuildContext context) => const TodoFormScreen(),
+        ),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
