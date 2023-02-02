@@ -16,7 +16,41 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const CounterScreen(title: 'Selamat Datang'),
+      home: const HomeWidget(),
+    );
+  }
+}
+
+class HomeWidget extends StatefulWidget {
+  const HomeWidget({super.key});
+
+  @override
+  State<HomeWidget> createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends State<HomeWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Aplikasi Coba')),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.task),
+            label: 'Todo',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calculate),
+            label: 'Counter',
+          ),
+        ],
+        currentIndex: 0,
+        selectedItemColor: Colors.amber,
+      ),
     );
   }
 }
