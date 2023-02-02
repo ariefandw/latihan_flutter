@@ -29,10 +29,25 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgets = [
+    Text('Selamat Datang'),
+    Text('Todo'),
+    CounterScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Aplikasi Coba')),
+      body: _widgets.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
@@ -48,7 +63,8 @@ class _HomeWidgetState extends State<HomeWidget> {
             label: 'Counter',
           ),
         ],
-        currentIndex: 0,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         selectedItemColor: Colors.amber,
       ),
     );
