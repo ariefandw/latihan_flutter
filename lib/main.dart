@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latihan_flutter/todo_screen.dart';
 import 'counter_screen.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   static const List<Widget> _widgets = [
     Text('Selamat Datang'),
-    Text('Todo'),
+    TodoScreen(),
     CounterScreen(),
   ];
 
